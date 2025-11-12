@@ -1,0 +1,21 @@
+{
+    "name": "nodejs-monorepo-microservices",
+    "version": "1.0.0",
+    "description": "A Node.js monorepo demonstrating microservices architecture",
+    "private": true,
+    "workspaces": [
+        "services/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "dev": "concurrently \"npm run dev --workspace=services/auth-service\" \"npm run dev --workspace=services/product-service\" \"npm run dev --workspace=services/order-service\"",
+        "build": "npm run build --workspaces",
+        "test": "npm run test --workspaces"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
